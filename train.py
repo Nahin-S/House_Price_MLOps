@@ -4,6 +4,7 @@ from sklearn.ensemble import RandomForestRegressor
 import mlflow
 import mlflow.sklearn 
 housing = fetch_california_housing(as_frame = True)
+mlflow.sklearn.autolog()
 
 X = housing.data
 y = housing.target
@@ -17,7 +18,5 @@ with mlflow.start_run():
 
     model.fit(X_train, y_train)
     score = model.score(X_test,y_test)
-    mlflow.log_param("n_estimators", 100)
-    mlflow.log_metric("r2_score", score)
-    mlflow.sklearn.log_model(model, "random_forest_model")
+    
     print(f'R2 score : {score :.4f}')
