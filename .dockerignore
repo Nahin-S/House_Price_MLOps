@@ -1,0 +1,7 @@
+mlops_venv/
+.git/
+.dvc/
+mlruns/
+mlflow.db
+__pycache__/
+*.pyc
