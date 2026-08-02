@@ -10,6 +10,8 @@ X = housing.data
 y = housing.target
 estimators = 30
 X_train, X_test, y_train, y_test = train_test_split(X,y,test_size = 0.2, random_state = 42)
+mlflow.set_tracking_uri("http://localhost:5000")
+
 with mlflow.start_run():
     model = RandomForestRegressor(
         n_estimators = estimators,
