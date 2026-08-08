@@ -1,0 +1,12 @@
+services:
+  mlflow:
+    image: mlflow-server:v1
+    container_name: mlflow-server
+    ports:
+      - "5000:5000"
+    volumes:
+      - mlflow-data:/app
+
+volumes:
+  mlflow-data:
+    external: true
