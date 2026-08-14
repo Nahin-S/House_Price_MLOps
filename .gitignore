@@ -4,3 +4,4 @@ __pycache__/
 mlflow.db
 mlruns/
 /california_housing.csv
+model.joblib

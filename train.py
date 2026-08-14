@@ -5,7 +5,7 @@ import mlflow
 import mlflow.sklearn 
 housing = fetch_california_housing(as_frame = True)
 mlflow.sklearn.autolog()
-
+import joblib
 X = housing.data
 y = housing.target
 estimators = 30
@@ -15,10 +15,14 @@ mlflow.set_tracking_uri("http://localhost:5000")
 with mlflow.start_run():
     model = RandomForestRegressor(
         n_estimators = estimators,
-        max_depth = 20
+        max_depth = 25
+        
     )
 
     model.fit(X_train, y_train)
     score = model.score(X_test,y_test)
     
     print(f'R2 score : {score :.4f}')
+
+
+joblib.dump(model, "model.joblib")
